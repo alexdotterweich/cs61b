@@ -1,0 +1,60 @@
+package db61b;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+
+import java.util.Iterator;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/** Tests the row class.
+ *  @author Alexandra Dotterweich. */
+public class testRow {
+
+    /** Tests size method. */
+    @Test
+    public void testSize() {
+        Row r = new Row(new String[]{"Hello", "world"});
+        assertEquals(2, r.size());
+    }
+
+    /** Tests get method. */
+    @Test
+    public void testGet() {
+        Row r = new Row(new String[]{"Hello", "world"});
+        assertEquals("world", r.get(1));
+    }
+
+    /** Tests equals method. */
+    @Test
+    public void testEquals() {
+        Row r = new Row(new String[]{"Hello", "world"});
+        Row t = new Row(new String[]{"Hello", "world"});
+        Row f = new Row(new String[]{"World", "hello"});
+        assertEquals(true, r.equals(t));
+        assertEquals(false, r.equals(f));
+    }
+
+    /** Tests the row constructor. */
+    @Test
+    public void testRowConstructor() {
+        List<Column> colList = new ArrayList<>();
+        Row firstRow = new Row(new String[]{"101","AKSOS", "wjw"});
+        Table t = new Table(new String[]{"SID", "Lastname", "Firstname"});
+        t.add(firstRow);
+        Column c1 = new Column("SID", t);
+        Column c2 = new Column("Lastname", t);
+        colList.add(c1);
+        colList.add(c2);
+        Row test1 = new Row(colList, firstRow);
+        Row expected = new Row(new String[] {"101", "AKSOS"});
+        assertEquals(test1, expected);
+    }
+
+    
+
+    /** Main method that takes in ARGS. */
+    public static void main(String[] args) {
+        System.exit(ucb.junit.textui.runClasses(testRow.class));
+    }
+}

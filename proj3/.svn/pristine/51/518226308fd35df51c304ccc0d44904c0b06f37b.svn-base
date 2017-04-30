@@ -1,0 +1,84 @@
+package graph;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import graph.DepthFirstTraversal;
+import graph.DirectedGraph;
+import graph.Graph;
+import graph.Traversal;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/** Unit tests for the Graph class.
+*  @author
+*/
+public class TraversalTest {
+
+    @Test
+    public void depthFirstTraversal() {
+//        DirectedGraph g = new DirectedGraph();
+//       
+//        Queue<Integer> fringe = new LinkedList<Integer>();
+//        g.add();
+//        g.add();
+//        g.add();
+//        g.add();
+//        g.add();
+//        g.add();
+//        g.add(1, 2);
+//        g.add(2, 3);
+//        g.add(3, 4);
+//        g.add(4, 2);
+//        g.add(4, 6);
+//        g.add(1, 5);
+//        g.add(5, 6);
+//        Traversal t = new Traversal(g, _stack);
+//        
+        
+        
+    }
+    
+    public class de extends DepthFirstTraversal{
+
+        /** A depth-first Traversal of G, using FRINGE as the fringe. */
+        protected de (Graph G) {
+            super(G);
+            // FIXME
+        }
+
+        @Override
+        protected boolean visit(int v) {
+            
+            return super.visit(v);
+        }
+
+        @Override
+        protected boolean postVisit(int v) {
+            
+            return super.postVisit(v);
+        }
+
+        // FIXME
+
+    }
+    public class bf extends BreadthFirstTraversal {
+
+        /** A depth-first Traversal of G, using FRINGE as the fringe. */
+        protected bf(Graph G) {
+            super(G);
+            // FIXME
+        }
+
+        @Override
+        protected boolean visit(int v) {
+            return super.visit(v);
+        }
+
+    }
+    
+    ArrayList<Integer> _stack = new ArrayList<Integer>();
+}

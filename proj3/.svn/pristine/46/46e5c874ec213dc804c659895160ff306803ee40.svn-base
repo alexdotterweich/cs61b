@@ -1,0 +1,52 @@
+package graph;
+
+import java.util.ArrayList;
+
+/* See restrictions in Graph.java. */
+
+/** Represents an undirected graph.  Out edges and in edges are not
+ *  distinguished.  Likewise for successors and predecessors.
+ *
+ *  @author
+ */
+public class UndirectedGraph extends GraphObj {
+
+    @Override
+    public boolean isDirected() {
+        return false;
+    }
+
+    @Override
+    public int inDegree(int v) {
+        return outDegree(v);
+    }
+
+    @Override
+    public int predecessor(int v, int k) {
+        if (_hashmap.containsKey(v)) {
+            ArrayList<Object> valueV = _hashmap.get(v);
+            ArrayList<Integer> newValueV = (ArrayList<Integer>) valueV.get(0);
+            if (k < newValueV.size() && k > -1) {
+                int index = (int) newValueV.get(k);
+                return index;
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public Iteration<Integer> predecessors(int v) {
+        ArrayList<Integer> newV = new ArrayList<Integer>(); 
+        if (contains(v)) {
+            ArrayList<Object> valueV = _hashmap.get(v);
+            ArrayList<Integer> newValueV = (ArrayList<Integer>) valueV.get(0);  
+            for (Object obj : newValueV) {
+                newV.add((Integer) obj);
+            }
+            return Iteration.iteration(newV);
+        }
+        return Iteration.iteration(newV);
+    }
+
+
+}

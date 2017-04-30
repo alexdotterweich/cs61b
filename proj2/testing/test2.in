@@ -1,0 +1,15 @@
+# Tests that several moves of a fully manual game work properly.
+java -ea jump61.Main
+None
+===#1===
+size 2
+manual Blue
+start
+1 1
+2 2
+1 2
+2 2
+%eb
+dump
+quit
+===#2===

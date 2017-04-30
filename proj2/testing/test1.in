@@ -1,0 +1,12 @@
+# Tests that the set command works.
+java -ea jump61.Main
+None
+===#1===
+size 2
+set 1 1 1 b
+set 2 2 1 r
+set 2 2 0 r
+
+dump
+quit
+===#2===

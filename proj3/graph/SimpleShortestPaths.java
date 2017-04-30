@@ -1,0 +1,65 @@
+package graph;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/* See restrictions in Graph.java. */
+
+/** A partial implementation of ShortestPaths that contains the weights of
+ *  the vertices and the predecessor edges.   The client needs to
+ *  supply only the two-argument getWeight method.
+ *  @author AlexDotterweich
+ */
+public abstract class SimpleShortestPaths extends ShortestPaths {
+
+    /** The shortest paths in G from SOURCE. */
+    public SimpleShortestPaths(Graph G, int source) {
+        this(G, source, 0);
+    }
+
+    /** A shortest path in G from SOURCE to DEST. */
+    public SimpleShortestPaths(Graph G, int source, int dest) {
+        super(G, source, dest);
+    }
+
+    @Override
+    public double getWeight(int v) {
+        return _weights.get(v);
+    }
+
+    @Override
+    protected void setWeight(int v, double w) {
+        _weights.put(v, w);
+    }
+
+    @Override
+    public int getPredecessor(int v) {
+        ArrayList<Integer> toAdd = new ArrayList<Integer>();
+        for (int i : _G.predecessors(v)) {
+            toAdd.add(i);
+        }
+        _pred.put(v, toAdd);
+        if (_pred.size() != 0) {
+            ArrayList<Integer> thisList = _pred.get(v);
+            return thisList.get(0);
+        }
+        return 0;
+    }
+
+    @Override
+    protected void setPredecessor(int v, int u) {
+        ArrayList<Integer> thisList = _pred.get(v);
+        if (thisList.size() > u) {
+            thisList.set(0, u);
+        }
+    }
+
+    /** Stores the weights associated with each pathway of nodes. */
+    private HashMap<Integer, Double> _weights =
+            new HashMap<Integer, Double>();
+
+    /** Stores the Predecessors associated with each Integer. */
+    private HashMap<Integer, ArrayList<Integer>> _pred =
+            new HashMap<Integer, ArrayList<Integer>>();
+
+}

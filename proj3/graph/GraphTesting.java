@@ -1,0 +1,173 @@
+package graph;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/** Unit tests for the Graph class.
+ *  @author AlexDotterweich
+ */
+public class GraphTesting {
+
+    @Test
+    public void emptyGraph() {
+        DirectedGraph g = new DirectedGraph();
+        assertEquals("Initial graph has vertices", 0, g.vertexSize());
+        assertEquals("Initial graph has edges", 0, g.edgeSize());
+    }
+
+    @Test
+    public void addContains() {
+        DirectedGraph g = new DirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(2, 3);
+        g.add(3, 1);
+        assertEquals("Initial graph has vertices", 3, g.vertexSize());
+        assertEquals("Initial graph has edges", 3, g.edgeSize());
+        assertEquals("Graph contains edge 1, 2", true, g.contains(1, 2));
+    }
+
+    @Test
+    public void removeEdges() {
+        DirectedGraph g = new DirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(2, 3);
+        g.add(3, 1);
+        g.remove(1, 2);
+        assertEquals("Initial graph has vertices", 3, g.vertexSize());
+        assertEquals("Initial graph has edges", 2, g.edgeSize());
+        assertEquals("Graph contains edge 1, 2", false, g.contains(1, 2));
+    }
+
+    @Test
+    public void removeVertex() {
+        DirectedGraph g = new DirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(2, 3);
+        g.add(3, 1);
+        g.remove(1);
+        assertEquals("Initial graph has vertices", 2, g.vertexSize());
+        assertEquals("Initial graph has edges", 1, g.edgeSize());
+        assertEquals("Graph contains edge 1, 2", false, g.contains(1, 2));
+    }
+
+    @Test
+    public void successor() {
+        DirectedGraph g = new DirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(2, 3);
+        g.add(3, 1);
+        g.add();
+        g.add(2, 4);
+        assertEquals("Initial graph has vertices", 4, g.vertexSize());
+        assertEquals("Initial graph has edges", 4, g.edgeSize());
+        assertEquals("0th successor of v is", 3, g.successor(2, 0));
+        assertEquals("1st successor of v is", 4, g.successor(2, 1));
+    }
+
+    @Test
+    public void predecessor() {
+        DirectedGraph g = new DirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(2, 3);
+        g.add(3, 1);
+        g.add();
+        g.add(4, 2);
+        assertEquals("Initial graph has vertices", 4, g.vertexSize());
+        assertEquals("Initial graph has edges", 4, g.edgeSize());
+        assertEquals("0th predecessor of v is", 1, g.predecessor(2, 0));
+        assertEquals("1st predecessor of v is", 4, g.predecessor(2, 1));
+    }
+
+    @Test
+    public void remove() {
+        DirectedGraph g = new DirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(1, 5);
+        g.add(2, 3);
+        g.add(2, 4);
+        g.remove(1);
+        assertEquals("Initial graph has vertices", 4, g.vertexSize());
+        assertEquals("Initial graph has edges", 2, g.edgeSize());
+        assertEquals("Graph contains edge 1, 2", false, g.contains(1, 2));
+    }
+
+    @Test
+    public void remove2() {
+        DirectedGraph g = new DirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(1, 5);
+        g.add(2, 3);
+        g.add(2, 4);
+        g.remove(1);
+        assertEquals("Initial graph has vertices", 4, g.vertexSize());
+        assertEquals("Initial graph has edges", 2, g.edgeSize());
+        assertEquals("Graph contains edge 1, 2", false, g.contains(1, 2));
+        g.add();
+        g.add(2, 4);
+        assertEquals("Contains 4, 2", false, g.contains(4, 2));
+        assertEquals("Initial graph has vertices", 5, g.vertexSize());
+        assertEquals("Initial graph has edges", 2, g.edgeSize());
+        assertEquals("Graph contains edge 2, 4", true, g.contains(2, 4));
+        assertEquals("Graph contains edge 1, 2", false, g.contains(1, 2));
+    }
+
+    @Test
+    public void removeU() {
+        UndirectedGraph g = new UndirectedGraph();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(2, 1);
+        assertEquals("Graph contains edge 1, 2", true, g.contains(1, 2));
+        assertEquals("Graph contains edge 2, 1", true, g.contains(2, 1));
+        assertEquals("0th successor of v is", 2, g.successor(1, 0));
+        g.remove(1, 2);
+        assertEquals("0th successor of v is", 0, g.successor(1, 0));
+    }
+
+    @Test
+    public void succ() {
+        UndirectedGraph g = new UndirectedGraph();
+        g.add();
+        g.add();
+        g.add();
+        g.add();
+        g.add();
+        g.add(1, 2);
+        g.add(2, 1);
+        g.add(1, 3);
+        g.add(1, 4);
+        assertEquals("0th successor of v is", true, 0 != g.successor(1, 0));
+        Iteration succ = g.successors(1);
+        assertEquals("0th successor of v is", 2, succ.next());
+        assertEquals("1st successor of v is", 3, succ.next());
+        assertEquals("2 successor of v is", 4, succ.next());
+        assertEquals("2 successor of v is", false, succ.hasNext());
+    }
+}

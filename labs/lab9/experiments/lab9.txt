@@ -1,0 +1,16 @@
+Answers to questions from lab.
+
+2. [Explain times for java HashTesting test1].
+
+    The first test was pretty quick for an input of 3, however when I tried 10, it took 42.2 seconds. I got bold and tried 300, however was far too impatient to wait for it to finish.
+
+3. [Explain times for java HashTesting test2 and test3].
+
+    Test2 took 0 seconds to complete when n was 20 and when n was 200, 2.6 seconds when n was 1239. When n was 2000, it took 9.7 seconds to complete. When I tried to input 20000, it gave me an "out of memory" error, saying that it ran out of heap space.Test 3 by contrast took 0 seconds when n was 20, 0.1 seconds when n was 200, 3.2 seconds when n was 1239 and also 9.7 seconds when n was 2000. The most distinct contrast in runtime I noted was that it took .6 seconds for test 2 to complete when n was 823, and 1.5 seconds for test3. I think that test3 may be slower because there are around 2^16 combos(not sure if this is the right way to conceptualize it) of for 2 of the 4 character codes, so more stuff to run through.
+
+4. [Why does HashSet fail to work in java HashTesting test4?]
+    
+    It didn't work because in the FoldedString constructor, it wasn't storing things the strings in uppercase, it was just storing them however they were entered. I'm not really sure what else is wrong with it though... 
+
+
+5. (Optional) Explain how ListTesting program demonstrates that LinkedLists are doubly linked.

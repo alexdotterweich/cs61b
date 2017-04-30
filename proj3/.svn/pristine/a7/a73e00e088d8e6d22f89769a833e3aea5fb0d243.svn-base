@@ -1,0 +1,32 @@
+package graph;
+
+import org.junit.Test;
+
+public class ShortestPathTesting {
+    class GraphPaths extends SimpleShortestPaths {
+        public GraphPaths() {
+            super(_g, _source, _dest);
+        }
+        
+        @Override
+        public double getWeight(int u, int v) {
+            return getWeight(u); 
+        }
+        
+        @Override
+        protected double estimatedDistance(int v) {
+            return getWeight(v) - 1;
+        }
+    }
+   
+    @Test
+    public void testWeights() {
+        GraphPaths gp = new GraphPaths();
+        gp.setPaths();
+    }
+
+    DirectedGraph _g = new DirectedGraph();
+    int _source = 4;
+    int _dest = 3;
+
+}

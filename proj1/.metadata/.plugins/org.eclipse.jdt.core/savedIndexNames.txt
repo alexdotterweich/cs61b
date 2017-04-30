@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+/Users/alex/Desktop/CS/cs61b/proj1/.metadata/.plugins/org.eclipse.jdt.core
+4070281618.index

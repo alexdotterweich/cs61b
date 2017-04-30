@@ -1,0 +1,12 @@
+# Tests that the staff program can play a small game with both staff-jump61
+java -ea jump61.Main
+None
+===#1===
+size 3
+auto Red
+start
+%rb
+%e
+quit
+===#2===
+

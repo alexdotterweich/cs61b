@@ -1,0 +1,26 @@
+Results for InsertRandomSpeedTest:
+linked-list:
+Tried inputting 3 and it completed in 0.04 seconds.
+Then, I got a little more risqué and tried 484848 and waited. and waited... and waited. finally I had had enough waiting and I terminated the program. Inputting 9898 took ll 31 seconds to execute. 
+
+bst:
+When I tried 3 here, it took 0.0 seconds. Although scorned by the linked-list implementation, and wary of the possibility of waiting infinitely for 484848 to excecute again, I tried it anyways and found that for my bst, it only took 11 seconds! The number 9898 here took only 1 second.
+
+treeset:
+Again 3 took 0.0 seconds. Here, 484848 took 59 seconds, which was slow compared to bst's, but reasonable nonetheless. For tree sets, 9898 was only one second slower than it was for bst's.
+
+
+
+Results for InsertInOrderSpeedTest:
+linked-list:
+Here, inputting 3 took 0 seconds. Again I tried 484848 here and waited a solid 5 minitues as I took my clothes out of the dryer, only to find that when I came back, the program still hadn't finished. Inputting 9898 took 32 seconds.
+
+bst:
+Again 0 seconds for 3. 484848 took 29 seconds this time. When I tried 9898, it took only 2 seconds. 
+
+treeset:
+Also, took 0 seconds for 3. When I tried 484848 here, it took 38 seconds. Here, 9898 took 2 seconds to complete again.
+
+Explain anything interesting that you might have observed above:
+
+It seems like for both in order and random speed tests, linked lists exhaust my patience. for random insertion, bsts are definitely the fastest, however for in order insertion, they're much slower. Tree sets by contrast are slower for random insertion, but are more or less at the same speed as bsts for in order insertion.
